@@ -8,6 +8,7 @@ from fabric.api import env
 env.hosts = ["34.75.39.77", "104.196.25.93"]
 env.user = "ubuntu"
 
+
 def do_pack():
     """Make it bro"""
     local('mkdir -p versions')
