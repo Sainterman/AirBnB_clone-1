@@ -7,7 +7,7 @@ from fabric.operations import local
 def do_pack():
     """Make it bro"""
     local('mkdir -p versions')
-    catched = local('tar -czvf versions/web_static{}.tar.gz web_static'
+    catched = local('tar -czvf versions/web_static{}.tgz web_static'
                     .format(datetime.strftime(datetime.now(), "%Y%m%d%H%M%S")),
                     capture=True)
     if catched.failed:
