@@ -7,7 +7,7 @@ sudo service nginx start
 sudo mkdir -p "/data/web_static/releases/test"
 sudo mkdir -p "/data/web_static/shared/"
 sudo touch "/data/web_static/releases/test/index.html"
-echo "<html><head><title>test</title></head><body><p>just fior testing.</p></body></html>">>/data/web_static/releases/test/index.html
+echo "<html><head><title>test</title></head><body><p>just fior testing.</p></body></html>">/data/web_static/releases/test/index.html
 
 sudo ln -sf "/data/web_static/releases/test/" "/data/web_static/current"
 sudo chown -R ubuntu:ubuntu /data/
