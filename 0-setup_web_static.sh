@@ -12,5 +12,5 @@ echo "<html><head><title>test</title></head><body><p>just fior testing.</p></bod
 sudo ln -sf "/data/web_static/releases/test/" "/data/web_static/current"
 sudo chown -R ubuntu:ubuntu /data/
 config="/etc/nginx/sites-available/default"
-sudo sed -i "/server_name _;/ a \\\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t\tautoindex off;\n\t}\n" "$config"
+sudo sed -i "/listen 80 default_server;/ a \\\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t\tautoindex off;\n\t}\n" "$config"
 sudo service nginx restart
