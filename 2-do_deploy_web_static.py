@@ -27,13 +27,13 @@ def do_deploy(archive_path):
             noext = name.split('.')[0]
             folder = '/data/web_static/releases/versions/{}/'.format(noext)
             put(archive_path, '/tmp')
-            run('mkdir -p {}'.format(folder))
-            run('tar -xzf /tmp/{} -C {}'.format(name, folder))
-            run('rm /tmp/{}'.format(name))
-            run('mv {}/web_static/* {}'.format(folder, folder))
-            run('rm -rf {}/web_static'.format(folder))
-            run('rm -rf /data/web_static/current')
-            run('ln -s /data/web_static/current {}'.format(folder))
+            sudo('mkdir -p {}'.format(folder))
+            sudo('tar -xzf /tmp/{} -C {}'.format(name, folder))
+            sudo('rm /tmp/{}'.format(name))
+            sudo('mv {}/web_static/* {}'.format(folder, folder))
+            sudo('rm -rf {}/web_static'.format(folder))
+            sudo('rm -rf /data/web_static/current')
+            sudo('ln -s /data/web_static/current {}'.format(folder))
             return True
         except Exception as identifier:
             return False
