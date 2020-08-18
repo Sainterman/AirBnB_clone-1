@@ -21,7 +21,7 @@ def do_pack():
 
 def do_deploy(archive_path):
     """Distribute an archive to the web servers"""
-    if os.path.isfile(archive_path):
+    if os.path.exists(archive_path):
         try:
             name = archive_path.split('/')[1]
             noext = name.split('.')[0]
@@ -30,6 +30,8 @@ def do_deploy(archive_path):
             run('sudo mkdir -p {}'.format(folder))
             run('sudo tar -xvf /tmp/{} -C {}'.format(name, folder))
             run('sudo rm /tmp/{}'.format(name))
+            run('sudo mv {}/web_static/* {}'.format(folder, folder))
+            run('sudo rm -rf {}/web_static'.format(folder))
             run('sudo rm -rf /data/web_static/current')
             run('sudo ln -s /data/web_static/current {}'.format(folder))
             return True
