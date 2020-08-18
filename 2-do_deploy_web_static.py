@@ -7,6 +7,7 @@ from fabric.api import env
 
 env.hosts = ['34.75.39.77', '104.196.25.93']
 
+
 def do_pack():
     """Make it bro"""
     local('mkdir -p versions')
@@ -17,6 +18,7 @@ def do_pack():
         return None
     return catched
 
+
 def do_deploy(archive_path):
     """Distribute an archive to the web servers"""
     if os.path.isfile(archive_path):
@@ -24,7 +26,7 @@ def do_deploy(archive_path):
             name = archive_path.split('/')[1]
             noext = name.split('.')[0]
             folder = '/data/web_static/releases/versions/{}/'.format(noext)
-            put(archive_path,'/tmp')
+            put(archive_path, '/tmp')
             run('sudo mkdir -p {}'.format(folder))
             run('sudo tar -xvf /tmp/{} -C {}'.format(name, folder))
             run('sudo rm /tmp/{}'.format(name))
@@ -33,6 +35,6 @@ def do_deploy(archive_path):
             return True
         except Exception as identifier:
             return False
-        
+
     else:
         return False
