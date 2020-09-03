@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, Integer
 from models.city import City
 from sqlalchemy.orm import relationship
 from os import getenv
-
+import models
 
 class State(BaseModel, Base):
     """ State class """
@@ -21,9 +21,8 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """ getter to cities asociated with the current state """
-            from models import storage
             cities = []
-            objects = storage.all("City")
+            objects = models.storage.all("City")
             for obj in objects.values():
                 if City == type(obj) and obj.state_id == self.id:
                     cities.append(obj)
