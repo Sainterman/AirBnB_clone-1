@@ -62,3 +62,8 @@ class FileStorage:
         if obj is not None:
             obj_class = str(obj.__class__).split('.')[2][:-2]
             del FileStorage.__objects[obj_class+'.'+obj.id]
+
+    def close(self):
+        """Close it bby"""
+        self.reload()
+            
