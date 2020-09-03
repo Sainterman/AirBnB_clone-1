@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/sr/bin/python3
 """This module defines a class to manage file storage for hbnb clone"""
 import json
 
@@ -66,4 +66,3 @@ class FileStorage:
     def close(self):
         """Close it bby"""
         self.reload()
-            
